@@ -1,0 +1,47 @@
+header {
+  position: relative;
+  background: white;
+  padding: 0;
+  border-bottom: 1px solid #e72929;
+
+  a {
+    padding: 10px;
+    color: #af1313;
+
+    &:hover {
+      background: #e72929;
+      color: white;
+      cursor: pointer;
+    }
+
+    .logo {
+      font-weight: bold;
+      padding: 10px;
+    }
+
+    span {
+      background: #ff4d4d;
+      color: white;
+      padding: 5px 8px;
+      border-radius: 50%;
+      font-size: 14px;
+    }
+  }
+
+  .container {
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  ul {
+    display: flex;
+    list-style-type: none;
+    margin: 0;
+
+    a {
+      padding: 10px;
+      display: inline-block;
+    }
+  }
+}
