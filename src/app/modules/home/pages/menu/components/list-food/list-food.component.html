@@ -1,0 +1,24 @@
+<ul>
+  <li *ngFor="let foodItem of foodList">
+    <a routerLink="/food/{{ foodItem.id }}">
+      <img [src]="foodItem.imageUrl" [alt]="foodItem.name" />
+      <div class="content">
+        <div class="name">
+          {{ foodItem.name }}
+        </div>
+        <span class="favorite {{ foodItem.favorite ? '' : 'not' }}">❤</span>
+        <div class="product-item-footer">
+          <div class="origins">
+            <span *ngFor="let origin of foodItem.origins"> {{ origin }}</span>
+          </div>
+          <div class="cook-time"><span>🕒</span>{{ foodItem.cookTime }}</div>
+        </div>
+        <div class="price">
+          <span>
+            {{ foodItem.price | currency : "USD" }}
+          </span>
+        </div>
+      </div>
+    </a>
+  </li>
+</ul>
