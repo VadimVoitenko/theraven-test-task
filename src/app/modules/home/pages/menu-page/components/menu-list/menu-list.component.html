@@ -1,6 +1,5 @@
 <ul>
-  <li *ngFor="let foodItem of foodList">
-    <a routerLink="/food/{{ foodItem.id }}">
+    <li *ngFor="let foodItem of foodList">
       <img [src]="foodItem.imageUrl" [alt]="foodItem.name" />
       <div class="content">
         <div class="name">
@@ -18,7 +17,8 @@
             {{ foodItem.price | currency : "USD" }}
           </span>
         </div>
+        <button (click)="addToCart(foodItem)">Add To Cart</button>
       </div>
-    </a>
-  </li>
-</ul>
+    </li>
+  </ul>
+  

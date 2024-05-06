@@ -7,8 +7,8 @@ ul {
   padding: 0;
 }
 
-li a {
-  height: 360px;
+li {
+  height: 420px;
   width: 320px;
   border: 1px solid whitesmoke;
   border-radius: 10px;
@@ -76,12 +76,30 @@ li a {
 }
 
 .price {
-  position: absolute;
-  bottom: 0;
-  left: 16px;
+  // position: absolute;
+  // bottom: 0;
+  // left: 16px;
   background: white;
   padding: 4px 0;
   color: #414141;
   margin-top: 12px;
   font-size: 18px;
+}
+
+button {
+  color: white;
+  background: #e72929;
+  border: none;
+  font-size: 16px;
+  padding: 16px;
+  margin-top: 16px;
+  border-radius: 50px;
+  width: 100%;
+  outline: none;
+  opacity: 0.8;
+
+  &:hover {
+    opacity: 1;
+    cursor: pointer;
+  }
 }

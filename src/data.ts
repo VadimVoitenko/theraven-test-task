@@ -1,6 +1,6 @@
-import { IFood } from './app/shared/interfaces/IFood';
+import { Food } from './app/shared/models/Food';
 
-export const sample_foods: IFood[] = [
+export const sample_foods: Food[] = [
   {
     id: '1',
     name: 'Pizza Pepperoni',

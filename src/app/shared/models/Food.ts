@@ -1,4 +1,4 @@
-export class IFood {
+export class Food {
   id!: string;
   name!: string;
   price!: number;

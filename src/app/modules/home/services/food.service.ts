@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { IFood } from '../../../shared/interfaces/IFood';
+import { Food } from '../../../shared/models/Food';
 import { sample_foods } from '../../../../data';
 
 @Injectable({
@@ -8,7 +8,7 @@ import { sample_foods } from '../../../../data';
 export class FoodService {
   constructor() {}
 
-  getAll(): IFood[] {
+  getAll(): Food[] {
     return sample_foods;
   }
 }
