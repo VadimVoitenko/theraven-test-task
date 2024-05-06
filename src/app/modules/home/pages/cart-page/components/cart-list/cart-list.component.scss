@@ -1,0 +1,72 @@
+.list {
+  display: flex;
+  flex-direction: column;
+  flex: 3 0;
+  justify-content: space-evenly;
+  border: 1px solid #e72929;
+  border-radius: 16px;
+  list-style: none;
+  margin: 8px;
+  padding: 0;
+
+  &-item {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    border-bottom: 1px solid #e4e4e4;
+
+    &:last-child {
+      bottom: none;
+    }
+
+    &__img img {
+      width: 70px;
+      height: 70px;
+      border-radius: 50px;
+      object-fit: cover;
+    }
+
+    &__counter {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100px;
+
+      .btn {
+        font-size: 24px;
+        padding: 5px 10px;
+        border: none;
+        background-color: white;
+        color: black;
+        cursor: pointer;
+      }
+
+      .value {
+        padding: 5px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        font-size: 16px;
+        font-weight: bold;
+      }
+    }
+
+    div {
+      padding: 16px;
+
+      &:not(:first-child) {
+        flex-basis: 20%;
+      }
+    }
+  }
+
+  .list-price {
+    padding: 16px;
+    font-size: 20px;
+
+    &::before {
+      content: "Total: ";
+      color: grey;
+    }
+  }
+}
