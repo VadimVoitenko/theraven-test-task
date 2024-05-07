@@ -17,7 +17,6 @@ export class CartListComponent {
   constructor(private cartService: CartService) {
     this.cartService.getCartObservable().subscribe((newCart) => {
       this.orderList = newCart;
-      console.log(newCart);
     });
   }
 

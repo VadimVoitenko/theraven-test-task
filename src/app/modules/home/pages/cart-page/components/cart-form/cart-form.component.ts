@@ -1,4 +1,4 @@
-import { CommonModule, NgIf } from '@angular/common';
+import { NgIf } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import {
   FormBuilder,
@@ -8,6 +8,9 @@ import {
   Validators,
 } from '@angular/forms';
 import { Cart } from '../../../../../../shared/models/Cart';
+import { OrderService } from '../../services/order.service';
+import { IOrder } from '../../../../../../shared/models/IOrder';
+import { IOrderItems } from '../../../../../../shared/models/IOrderItems';
 
 @Component({
   selector: 'app-cart-form',
@@ -20,8 +23,13 @@ export class CartFormComponent implements OnInit {
   initialPhoneValue: string = '+';
   orderForm!: FormGroup;
   localStorageData!: Cart;
+  simplifiedItems: IOrderItems[] = [];
+  orderData!: IOrder;
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(
+    private formBuilder: FormBuilder,
+    private orderService: OrderService
+  ) {
     const localStorageItem = localStorage.getItem('Cart');
     if (localStorageItem) {
       this.localStorageData = JSON.parse(localStorageItem);
@@ -54,12 +62,30 @@ export class CartFormComponent implements OnInit {
   }
 
   onSubmit() {
-    if (this.orderForm.valid) {
-      console.log(this.orderForm.value);
-      const combinedData = { ...this.orderForm, ...this.localStorageData };
-      console.log('Combined dada: ', combinedData);
-    } else {
-      // Add toastr
-    }
+    if (!this.orderForm.valid) return;
+
+    const { name, surname, address, phone } = this.orderForm.value;
+
+    this.localStorageData.items.forEach((orderItem) => {
+      const simplifiedItem = {
+        name: orderItem.foodItem.name,
+        totalPrice: orderItem.price,
+        quantity: orderItem.quantity,
+      };
+      this.simplifiedItems.push(simplifiedItem);
+    });
+
+    const orderData = {
+      name: name,
+      surname: surname,
+      address: address,
+      phone: phone,
+      // items: this.localStorageData.items,
+      items: this.simplifiedItems,
+      totalCount: this.localStorageData.totalCount,
+      totalPrice: this.localStorageData.totalPrice,
+    };
+
+    this.orderService.createOrder(orderData);
   }
 }
