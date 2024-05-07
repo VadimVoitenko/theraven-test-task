@@ -6,6 +6,7 @@ import { CartItem } from '../../../../shared/models/CartItem';
 import { CurrencyPipe, NgFor } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { CartListComponent } from './components/cart-list/cart-list.component';
+import { CartFormComponent } from './components/cart-form/cart-form.component';
 
 @Component({
   selector: 'app-cart-page',
@@ -16,6 +17,7 @@ import { CartListComponent } from './components/cart-list/cart-list.component';
     RouterLink,
     CurrencyPipe,
     CartListComponent,
+    CartFormComponent,
   ],
   templateUrl: './cart-page.component.html',
   styleUrl: './cart-page.component.scss',

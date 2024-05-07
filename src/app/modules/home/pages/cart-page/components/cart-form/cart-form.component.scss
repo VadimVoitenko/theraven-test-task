@@ -1,0 +1,60 @@
+.checkout {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid #e72929;
+  border-radius: 16px;
+  padding: 8px;
+  margin: 8px;
+
+  form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    font-size: 24px;
+    padding: 0 16px 16px 16px;
+
+    label {
+      display: block;
+      font-size: 20px;
+      font-weight: bold;
+      margin-bottom: 5px;
+      margin-top: 10px;
+    }
+
+    input[type="text"],
+    input[type="tel"] {
+      width: 100%;
+      padding: 8px;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+      box-sizing: border-box;
+    }
+
+    .error-message {
+      color: red;
+      font-size: 16px;
+      font-weight: bold;
+    }
+
+    button {
+      padding: 16px;
+      margin-top: 10px;
+      color: white;
+      background-color: #e72929;
+      display: block;
+      font-size: 16px;
+      width: 100%;
+      border-radius: 16px;
+      border: none;
+      opacity: 0.8;
+
+      &:hover {
+        opacity: 1;
+        cursor: pointer;
+      }
+    }
+  }
+}
