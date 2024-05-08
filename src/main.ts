@@ -9,21 +9,13 @@ import { getFirestore, provideFirestore } from '@angular/fire/firestore';
 import { getStorage, provideStorage } from '@angular/fire/storage';
 import { provideToastr } from 'ngx-toastr';
 import { provideAnimations } from '@angular/platform-browser/animations';
+import { environment } from './env/environment.prod';
 
 bootstrapApplication(AppComponent, {
   providers: [
     provideRouter(routes),
     importProvidersFrom(
-      provideFirebaseApp(() =>
-        initializeApp({
-          projectId: 'theraven-test-task-b0b5c',
-          appId: '1:48230265347:web:0f9dfb027abd42fdc85436',
-          storageBucket: 'theraven-test-task-b0b5c.appspot.com',
-          apiKey: 'AIzaSyCeTa3ygzsJGIGIg2iN6zznsB1sv979QUQ',
-          authDomain: 'theraven-test-task-b0b5c.firebaseapp.com',
-          messagingSenderId: '48230265347',
-        })
-      )
+      provideFirebaseApp(() => initializeApp(environment.firebaseConfig))
     ),
     importProvidersFrom(provideAuth(() => getAuth())),
     importProvidersFrom(provideFirestore(() => getFirestore())),
