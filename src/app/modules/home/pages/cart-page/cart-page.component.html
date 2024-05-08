@@ -1,36 +1,6 @@
 <app-header></app-header>
 
 <div class="container">
-  <!-- <ul>
-    <li *ngFor="let orderItem of orderList.items">
-      <div>
-        <img
-          [src]="orderItem.foodItem.imageUrl"
-          [alt]="orderItem.foodItem.name"
-        />
-      </div>
-      <div>
-        <h3>{{ orderItem.foodItem.name }}</h3>
-      </div>
-      <div>
-        <div class="counter">
-          <button (click)="decreaseQuantity(orderItem)">-</button>
-          <span>{{ orderItem.quantity }}</span>
-          <button (click)="increaseQuantity(orderItem)">+</button>
-        </div>
-      </div>
-      <div>
-        {{ orderItem.price | currency }}
-      </div>
-    </li>
-    <div class="foods-price">{{ orderList.totalPrice | currency }}</div>
-  </ul>
-
-  <div class="checkout">
-    <div>Тут буде форма</div>
-    <button>Order</button>
-  </div> -->
-
   <app-cart-list class="list"></app-cart-list>
   <app-cart-form class="form"></app-cart-form>
 </div>

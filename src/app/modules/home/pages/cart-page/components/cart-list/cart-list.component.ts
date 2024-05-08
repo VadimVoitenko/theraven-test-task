@@ -2,19 +2,20 @@ import { Component } from '@angular/core';
 import { Cart } from '../../../../../../shared/models/Cart';
 import { CartService } from '../../services/cart.service';
 import { CartItem } from '../../../../../../shared/models/CartItem';
-import { CurrencyPipe, NgFor } from '@angular/common';
+import { CurrencyPipe, NgFor, NgIf } from '@angular/common';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-cart-list',
   standalone: true,
-  imports: [CurrencyPipe, NgFor],
+  imports: [CurrencyPipe, NgFor, NgIf],
   templateUrl: './cart-list.component.html',
   styleUrl: './cart-list.component.scss',
 })
 export class CartListComponent {
   orderList!: Cart;
 
-  constructor(private cartService: CartService) {
+  constructor(private cartService: CartService, private toastr: ToastrService) {
     this.cartService.getCartObservable().subscribe((newCart) => {
       this.orderList = newCart;
     });
@@ -22,6 +23,7 @@ export class CartListComponent {
 
   removeFromCart(orderItem: CartItem) {
     this.cartService.removeFromCart(orderItem.foodItem.id);
+    this.toastr.info('Removed from cart');
   }
 
   increaseQuantity(orderItem: CartItem) {

@@ -11,6 +11,7 @@ import { Cart } from '../../../../../../shared/models/Cart';
 import { OrderService } from '../../services/order.service';
 import { IOrder } from '../../../../../../shared/models/IOrder';
 import { IOrderItems } from '../../../../../../shared/models/IOrderItems';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-cart-form',
@@ -28,7 +29,8 @@ export class CartFormComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private orderService: OrderService
+    private orderService: OrderService,
+    private toastr: ToastrService
   ) {
     const localStorageItem = localStorage.getItem('Cart');
     if (localStorageItem) {
@@ -62,30 +64,34 @@ export class CartFormComponent implements OnInit {
   }
 
   onSubmit() {
-    if (!this.orderForm.valid) return;
+    if (this.orderForm.valid) {
+      const { name, surname, address, phone } = this.orderForm.value;
 
-    const { name, surname, address, phone } = this.orderForm.value;
+      this.localStorageData.items.forEach((orderItem) => {
+        const simplifiedItem = {
+          name: orderItem.foodItem.name,
+          totalPrice: orderItem.price,
+          quantity: orderItem.quantity,
+        };
+        this.simplifiedItems.push(simplifiedItem);
+      });
 
-    this.localStorageData.items.forEach((orderItem) => {
-      const simplifiedItem = {
-        name: orderItem.foodItem.name,
-        totalPrice: orderItem.price,
-        quantity: orderItem.quantity,
+      const orderData = {
+        name: name,
+        surname: surname,
+        address: address,
+        phone: phone,
+        items: this.simplifiedItems,
+        totalCount: this.localStorageData.totalCount,
+        totalPrice: this.localStorageData.totalPrice,
       };
-      this.simplifiedItems.push(simplifiedItem);
-    });
 
-    const orderData = {
-      name: name,
-      surname: surname,
-      address: address,
-      phone: phone,
-      // items: this.localStorageData.items,
-      items: this.simplifiedItems,
-      totalCount: this.localStorageData.totalCount,
-      totalPrice: this.localStorageData.totalPrice,
-    };
-
-    this.orderService.createOrder(orderData);
+      this.orderService.createOrder(orderData);
+      this.orderForm.reset();
+      this.toastr.success('Ordered successfully!');
+    } else {
+      this.toastr.warning('Invalid order!', 'Please, check form!');
+      return;
+    }
   }
 }

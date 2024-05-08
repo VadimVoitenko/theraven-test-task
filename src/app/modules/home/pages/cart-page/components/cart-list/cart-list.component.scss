@@ -9,6 +9,12 @@
   margin: 8px;
   padding: 0;
 
+  .content {
+    h3 {
+      text-align: center;
+    }
+  }
+
   &-item {
     display: flex;
     justify-content: space-around;
