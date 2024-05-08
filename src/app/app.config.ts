@@ -5,10 +5,9 @@ import { provideStorage, getStorage } from '@angular/fire/storage';
 import { provideRouter } from '@angular/router';
 
 import { routes } from './app.routes';
-import { ToastrModule, provideToastr } from 'ngx-toastr';
-import { provideAnimations } from '@angular/platform-browser/animations';
+import { provideToastr } from 'ngx-toastr';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
-import { environment } from '../environments/environment.development';
+import { environment } from '../env/environment.prod';
 
 export const appConfig: ApplicationConfig = {
   providers: [
