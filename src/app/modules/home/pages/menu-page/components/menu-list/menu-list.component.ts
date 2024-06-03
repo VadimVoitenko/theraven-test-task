@@ -4,7 +4,6 @@ import { FoodService } from '../../../../services/food.service';
 import { Router, RouterLink } from '@angular/router';
 import { CurrencyPipe, NgFor } from '@angular/common';
 import { CartService } from '../../../cart-page/services/cart.service';
-import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-menu-list',
@@ -18,8 +17,7 @@ export class MenuListComponent {
 
   constructor(
     private foodService: FoodService,
-    private cartService: CartService,
-    // private toastr: ToastrService
+    private cartService: CartService
   ) {
     this.foodList = this.foodService.getAll();
   }
@@ -28,6 +26,5 @@ export class MenuListComponent {
 
   addToCart(food: Food) {
     this.cartService.addToCart(food);
-    // this.toastr.success('Added to cart');
   }
 }

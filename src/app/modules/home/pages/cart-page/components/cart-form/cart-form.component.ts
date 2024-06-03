@@ -12,6 +12,7 @@ import { OrderService } from '../../services/order.service';
 import { IOrder } from '../../../../../../shared/models/IOrder';
 import { IOrderItems } from '../../../../../../shared/models/IOrderItems';
 import { ToastrService } from 'ngx-toastr';
+import { v4 as uuidv4 } from 'uuid';
 
 @Component({
   selector: 'app-cart-form',
@@ -46,7 +47,7 @@ export class CartFormComponent implements OnInit {
           Validators.required,
           Validators.minLength(3),
           Validators.maxLength(15),
-          Validators.pattern(/^[a-zA-Z\s]*$/),
+          Validators.pattern(/^[a-zA-Zа-яА-ЯіїєґІЇЄҐ'.\s]*$/),
         ],
       ],
       surname: [
@@ -55,15 +56,24 @@ export class CartFormComponent implements OnInit {
           Validators.required,
           Validators.minLength(3),
           Validators.maxLength(15),
-          Validators.pattern(/^[a-zA-Z\s]*$/),
+          Validators.pattern(/^[a-zA-Zа-яА-ЯіїєґІЇЄҐ'\s]*$/),
         ],
       ],
-      address: ['', [Validators.required, Validators.minLength(7)]],
-      phone: ['', [Validators.required, Validators.pattern(/^\+\d{10,15}$/)]],
+      address: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(7),
+          Validators.pattern(/^[a-zA-Zа-яА-ЯіїєґІЇЄҐ0-9.,'\s-]+$/),
+        ],
+      ],
+      phone: ['', [Validators.required, Validators.pattern(/^\+\d{12}$/)]],
     });
   }
 
   onSubmit() {
+    const currentTime = new Date();
+
     if (this.orderForm.valid) {
       const { name, surname, address, phone } = this.orderForm.value;
 
@@ -77,6 +87,9 @@ export class CartFormComponent implements OnInit {
       });
 
       const orderData = {
+        // id: uuidv4(),
+        // id: 'uuidv4-89098-1111',
+        id: Date.now().toString(),
         name: name,
         surname: surname,
         address: address,
@@ -84,13 +97,17 @@ export class CartFormComponent implements OnInit {
         items: this.simplifiedItems,
         totalCount: this.localStorageData.totalCount,
         totalPrice: this.localStorageData.totalPrice,
+        sendTime: currentTime.toISOString().slice(0, -5),
       };
 
-      this.orderService.createOrder(orderData);
+      this.orderService.addOrder(orderData);
       this.orderForm.reset();
-      this.toastr.success('Ordered successfully!');
+      this.toastr.success('Успішне замовлення!');
     } else {
-      this.toastr.warning('Invalid order!', 'Please, check form!');
+      this.toastr.warning(
+        'Некоректне замовлення!',
+        'Будь ласка, перевірте форму!'
+      );
       return;
     }
   }

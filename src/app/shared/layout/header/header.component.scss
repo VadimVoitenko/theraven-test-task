@@ -2,16 +2,18 @@ header {
   position: relative;
   background: white;
   padding: 0;
-  border-bottom: 1px solid #e72929;
+  border-bottom: 1px solid #009688;
 
   a {
     padding: 10px;
-    color: #af1313;
+    color: #009688;
+    transition: all 0.2s;
 
     &:hover {
-      background: #e72929;
+      background: #009687;
       color: white;
       cursor: pointer;
+      transition: all 0.2s;
     }
 
     .logo {
@@ -20,7 +22,7 @@ header {
     }
 
     span {
-      background: #ff4d4d;
+      background: #009687ae;
       color: white;
       padding: 5px 8px;
       border-radius: 50%;
@@ -31,7 +33,7 @@ header {
   .container {
     margin: 0 auto;
     display: flex;
-    justify-content: space-between;
+    justify-content: end;
   }
 
   ul {
@@ -42,6 +44,10 @@ header {
     a {
       padding: 10px;
       display: inline-block;
+    }
+
+    &.navbar-list {
+      padding: 0;
     }
   }
 }

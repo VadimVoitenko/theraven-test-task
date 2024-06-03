@@ -1,41 +1,41 @@
 <div class="checkout">
   <form [formGroup]="orderForm" (ngSubmit)="onSubmit()">
     <div class="form-field">
-      <label for="name">Name:</label>
+      <label for="name">Ім'я:</label>
       <input
         type="text"
         formControlName="name"
         id="name"
         required=""
-        placeholder="Name"
+        placeholder="Введіть ім'я"
       />
       <div
         *ngIf="orderForm.get('name')?.errors && orderForm.get('name')?.touched"
         class="error-message"
       >
         <small *ngIf="orderForm.controls['name'].hasError('required')">
-          Name is required.
+          Необхідно ввести ім'я
         </small>
         <small *ngIf="orderForm.controls['name'].hasError('minlength')">
-          Name must be at least 3 characters long.</small
+          Ім'я повинно мати більше 3-х символів.</small
         >
         <small *ngIf="orderForm.controls['name'].hasError('maxlength')">
-          Name cannot be more than 15 characters long.</small
+          Ім'я не може мати більше 15 символів.</small
         >
         <small *ngIf="orderForm.controls['name'].hasError('pattern')">
-          Name must have only letters.</small
+          Ім'я повинно мати лише букви.</small
         >
       </div>
     </div>
 
     <div class="form-field">
-      <label for="surname">Surname:</label>
+      <label for="surname">Прізвище:</label>
       <input
         type="text"
         formControlName="surname"
         id="surname"
         required=""
-        placeholder="Surname"
+        placeholder="Введіть прізвище"
       />
       <div
         *ngIf="
@@ -44,28 +44,28 @@
         class="error-message"
       >
         <small *ngIf="orderForm.controls['surname'].hasError('required')">
-          Surname is required.
+          Необідно ввести прізвище.
         </small>
         <small *ngIf="orderForm.controls['surname'].hasError('minlength')">
-          Surname must be at least 3 characters long.</small
+          Прізвище повинно мати більше 3-х символів.</small
         >
         <small *ngIf="orderForm.controls['surname'].hasError('maxlength')">
-          Surname cannot be more than 15 characters long.</small
+          Прізвище не може мати більше 15 символів.</small
         >
         <small *ngIf="orderForm.controls['surname'].hasError('pattern')">
-          Surname must have only letters.</small
+          Прізвище має містити лише букви.</small
         >
       </div>
     </div>
 
     <div class="form-field">
-      <label for="address">Address:</label>
+      <label for="address">Адреса доставки:</label>
       <input
         type="text"
         formControlName="address"
         id="address"
         required=""
-        placeholder="Address"
+        placeholder="Введіть адресу доставки"
       />
       <div
         *ngIf="
@@ -74,16 +74,16 @@
         class="error-message"
       >
         <small *ngIf="orderForm.controls['address'].hasError('required')">
-          Address is required.
+          Необхідно ввести адресу
         </small>
         <small *ngIf="orderForm.controls['address'].hasError('minlength')">
-          Address must be at least 7 characters long.</small
+          Адреса доставки повинна мати більше 7 символів.</small
         >
       </div>
     </div>
 
     <div class="form-field">
-      <label for="phone">Phone:</label>
+      <label for="phone">Номер телефону:</label>
       <input
         type="tel"
         formControlName="phone"
@@ -100,14 +100,14 @@
         class="error-message"
       >
         <small *ngIf="orderForm.controls['phone'].hasError('required')">
-          Phone number is required.
+          Необхідно ввести номер телефону.
         </small>
         <small *ngIf="orderForm.controls['phone'].hasError('pattern')">
-          Invalid phone number format.</small
+          Некоректний формат телефону.</small
         >
       </div>
     </div>
 
-    <button type="submit">ORDER</button>
+    <button type="submit">ЗАМОВИТИ</button>
   </form>
 </div>

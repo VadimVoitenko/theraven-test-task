@@ -1,0 +1,147 @@
+// .checkout {
+//   display: flex;
+//   flex-direction: column;
+//   justify-content: space-between;
+//   align-items: center;
+//   border: 1px solid #e72929;
+//   border-radius: 16px;
+//   padding: 8px;
+//   margin: 8px;
+
+//   form {
+//     display: flex;
+//     flex-direction: column;
+//     justify-content: center;
+//     align-items: flex-start;
+//     font-size: 24px;
+//     padding: 0 16px 16px 16px;
+
+//     label {
+//       display: block;
+//       font-size: 20px;
+//       font-weight: bold;
+//       margin-bottom: 5px;
+//       margin-top: 10px;
+//     }
+
+//     input[type="text"],
+//     input[type="tel"] {
+//       width: 100%;
+//       padding: 8px;
+//       border-radius: 4px;
+//       border: 1px solid #ccc;
+//       box-sizing: border-box;
+//     }
+
+//     .error-message {
+//       color: red;
+//       font-size: 16px;
+//       font-weight: bold;
+//     }
+
+//     button {
+//       padding: 16px;
+//       margin-top: 10px;
+//       color: white;
+//       background-color: #e72929;
+//       display: block;
+//       font-size: 16px;
+//       width: 100%;
+//       border-radius: 16px;
+//       border: none;
+//       opacity: 0.8;
+
+//       &:hover {
+//         opacity: 1;
+//         cursor: pointer;
+//       }
+//     }
+//   }
+// }
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: linear-gradient(
+    25deg,
+    rgb(0 131 173) 0%,
+    rgb(63 255 219) 52%,
+    rgb(118 0 251) 100%
+  );
+}
+
+.content {
+  padding: 50px;
+  // background-color: rgb(0, 109, 87);
+  // background: transparent;
+  // background: linear-gradient(
+  //   25deg,
+  //   rgb(0 131 173) 0%,
+  //   rgb(63 255 219) 52%,
+  //   rgb(118 0 251) 100%
+  // );
+  // background-color: transparent;
+  // filter: blur(1px);
+  background: rgb(33, 39, 41);
+  color: white;
+  // backdrop-filter: blur(100px) brightness(105%);
+  text-align: center;
+  border-radius: 25px;
+
+  @media (max-width: 480px) {
+    padding: 30px;
+  }
+}
+
+.title {
+  text-transform: uppercase;
+  margin-bottom: 25px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  max-width: 300px;
+  margin: 0 auto;
+
+  // label {
+  // margin-bottom: 35px;
+  // }
+
+  mat-form-field {
+    margin-bottom: 10px;
+  }
+
+  // input {
+  //   margin-bottom: 10px;
+  //   padding: 5px;
+  // }
+  .button-hide {
+    border: none;
+    background: inherit;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  .button-submit {
+    margin-top: 15px;
+    padding: 5px 10px;
+    background-color: rgba(9, 121, 101, 1);
+    font-size: 18px;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: all 0.3s;
+
+    &:hover {
+      background-color: rgb(5, 96, 79);
+      transition: all 0.3s;
+    }
+  }
+}

@@ -1,0 +1,43 @@
+<div class="container">
+  <div class="content">
+    <h2 class="title">Авторизація</h2>
+    <form class="form" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <mat-form-field>
+        <mat-label>Електронна адреса</mat-label>
+        <input matInput formControlName="email" type="email" required="" />
+        <mat-error *ngIf="loginForm.get('email')?.hasError('required')"
+          >Введіть електронну адресу</mat-error
+        >
+        <mat-error *ngIf="loginForm.get('email')?.hasError('email')"
+          >Невірна адреса</mat-error
+        >
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Пароль</mat-label>
+        <input
+          matInput
+          [type]="hide ? 'password' : 'text'"
+          formControlName="password"
+          required=""
+        />
+
+        <mat-error *ngIf="loginForm.get('password')?.hasError('required')"
+          >Введіть пароль</mat-error
+        >
+        <button
+          class="button-hide"
+          mat-icon-button
+          matSuffix
+          (click)="hide = !hide"
+          [attr.aria-label]="'Hide password'"
+          [attr.aria-pressed]="hide"
+        >
+          <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
+        </button>
+      </mat-form-field>
+
+      <button mat-button class="button-submit" type="submit">Увійти</button>
+    </form>
+  </div>
+</div>

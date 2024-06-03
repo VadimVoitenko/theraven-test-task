@@ -16,7 +16,9 @@ li {
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  color: #e72929;
+  // color: #e72929;
+  color: #007096;
+  background-color: #00968840;
 
   &:hover {
     opacity: 0.9;
@@ -34,6 +36,10 @@ li {
   padding: 8px 16px;
   position: relative;
   height: 100px;
+
+  .name {
+    font-size: 16px;
+  }
 }
 
 .favorite {
@@ -79,7 +85,7 @@ li {
   // position: absolute;
   // bottom: 0;
   // left: 16px;
-  background: white;
+  // background: white;
   padding: 4px 0;
   color: #414141;
   margin-top: 12px;
@@ -88,9 +94,10 @@ li {
 
 button {
   color: white;
-  background: #e72929;
+  // background: #e72929;
+  background: #009688;
   border: none;
-  font-size: 16px;
+  font-size: 18px;
   padding: 16px;
   margin-top: 16px;
   border-radius: 50px;

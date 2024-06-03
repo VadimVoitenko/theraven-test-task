@@ -19,11 +19,11 @@ export class CartService {
     let cartItem = this.cart.items.find((item) => item.foodItem.id === food.id);
 
     if (cartItem) {
-      this.toastr.info('Already Added');
+      this.toastr.info('Вже додано!');
       return;
     } else {
       this.cart.items.push(new CartItem(food));
-      this.toastr.success('Added to cart');
+      this.toastr.success('Додано до корзини!');
 
       this.setCartToLocalStorage();
     }

@@ -1,12 +1,21 @@
 <header>
   <div class="container">
-    <a href="/" class="logo">Menu</a>
+    <a routerLink="/menu" class="logo" *ngIf="isUser()">Меню</a>
     <nav class="navbar">
       <ul class="navbar-list">
-        <li>
+        <li *ngIf="isAdmin()">
+          <a routerLink="/admin/order-list">Замовлення</a>
+        </li>
+        <li *ngIf="isAdmin()">
+          <a routerLink="/admin/completed-orders">Архів замовлень</a>
+        </li>
+        <li *ngIf="isUser()">
           <a routerLink="/cart-page" routerLinkActive="active">
-            Cart <span *ngIf="cartQuantity">{{ cartQuantity }}</span>
+            Корзина <span *ngIf="cartQuantity">{{ cartQuantity }}</span>
           </a>
+        </li>
+        <li>
+          <a routerLink="/login">Вийти</a>
         </li>
       </ul>
     </nav>

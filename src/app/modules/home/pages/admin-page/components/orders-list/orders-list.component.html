@@ -1,0 +1,58 @@
+<div class="mat-elevation-z8">
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    <ng-container matColumnDef="sendTime">
+      <th mat-header-cell *matHeaderCellDef="">Час замовлення</th>
+      <td mat-cell *matCellDef="let item">{{ item.sendTime }}</td>
+    </ng-container>
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef="">Ім'я</th>
+      <td mat-cell *matCellDef="let item">{{ item.name }}</td>
+    </ng-container>
+    <ng-container matColumnDef="surname">
+      <th mat-header-cell *matHeaderCellDef>Прізвище</th>
+      <td mat-cell *matCellDef="let item">{{ item.surname }}</td>
+    </ng-container>
+    <ng-container matColumnDef="phoneNumber">
+      <th mat-header-cell *matHeaderCellDef>Телефон</th>
+      <td mat-cell *matCellDef="let item">{{ item.phone }}</td>
+    </ng-container>
+    <ng-container matColumnDef="address">
+      <th mat-header-cell *matHeaderCellDef>Адреса доставки</th>
+      <td mat-cell *matCellDef="let item" class="image-cell">
+        {{ item.address }}
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="orders">
+      <th mat-header-cell *matHeaderCellDef>Замовлення</th>
+      <td mat-cell *matCellDef="let item" class="image-cell">
+        <ul>
+          <li *ngFor="let order of item.items">
+            <p>Продукт: {{ order.name }}</p>
+            <p>Кількість: {{ order.quantity }}</p>
+            <p>Всього: {{ order.totalPrice | currency : "₴" }}</p>
+          </li>
+        </ul>
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="totalPrice">
+      <th mat-header-cell *matHeaderCellDef>Всього</th>
+      <td mat-cell *matCellDef="let item" class="image-cell">
+        {{ item.totalPrice | currency : "₴" }}
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="confirm">
+      <th mat-header-cell *matHeaderCellDef>Відправлення</th>
+      <td mat-cell *matCellDef="let item" class="image-cell">
+        <button
+          matButton
+          class="button"
+          (click)="sendOrder(item); deleteOrder(item)"
+        >
+          Відправити
+        </button>
+      </td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
+</div>

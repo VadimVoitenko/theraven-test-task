@@ -23,7 +23,7 @@ export class CartListComponent {
 
   removeFromCart(orderItem: CartItem) {
     this.cartService.removeFromCart(orderItem.foodItem.id);
-    this.toastr.info('Removed from cart');
+    this.toastr.info('Видалено з корзини');
   }
 
   increaseQuantity(orderItem: CartItem) {
